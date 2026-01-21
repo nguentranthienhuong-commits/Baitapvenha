@@ -36,8 +36,6 @@ public class rectangle {
     public int getArea() {
         return length * width;
     }
-     @Override
-    public String toString() {
-        return "Rectangle [length=" + length + ", width=" + width + "]";
-    }
+     
 }
+
