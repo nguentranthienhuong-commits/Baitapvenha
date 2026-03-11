@@ -1,0 +1,109 @@
+class HangSanXuat {
+
+    private String tenHangSanXuat;
+    private String tenQuocGia;
+
+    public HangSanXuat(String tenHangSanXuat, String tenQuocGia) {
+        this.tenHangSanXuat = tenHangSanXuat;
+        this.tenQuocGia = tenQuocGia;
+    }
+
+    public String getTenHangSanXuat() {
+        return tenHangSanXuat;
+    }
+
+    public String getTenQuocGia() {
+        return tenQuocGia;
+    }
+}
+abstract class PhuongTienDiChuyen {
+
+    protected String loaiPhuongTien;
+    protected HangSanXuat hangSanXuat;
+
+    public PhuongTienDiChuyen(String loaiPhuongTien, HangSanXuat hangSanXuat) {
+        this.loaiPhuongTien = loaiPhuongTien;
+        this.hangSanXuat = hangSanXuat;
+    }
+
+    public String layTenHangSanXuat() {
+        return hangSanXuat.getTenHangSanXuat();
+    }
+
+    public void batDau() {
+        System.out.println("Bat dau di chuyen");
+    }
+
+    public void tangToc() {
+        System.out.println("Tang toc");
+    }
+
+    public void dungLai() {
+        System.out.println("Dung lai");
+    }
+
+    public abstract double layVanToc();
+}
+class MayBay extends PhuongTienDiChuyen {
+
+    private String loaiNhienLieu;
+
+    public MayBay(String loaiPhuongTien, HangSanXuat hangSanXuat, String loaiNhienLieu) {
+        super(loaiPhuongTien, hangSanXuat);
+        this.loaiNhienLieu = loaiNhienLieu;
+    }
+
+    public void catCanh() {
+        System.out.println("May bay cat canh");
+    }
+
+    public void haCanh() {
+        System.out.println("May bay ha canh");
+    }
+
+    @Override
+    public double layVanToc() {
+        return 800;
+    }
+}
+class XeOto extends PhuongTienDiChuyen {
+
+    private String loaiNhienLieu;
+
+    public XeOto(String loaiPhuongTien, HangSanXuat hangSanXuat, String loaiNhienLieu) {
+        super(loaiPhuongTien, hangSanXuat);
+        this.loaiNhienLieu = loaiNhienLieu;
+    }
+
+    @Override
+    public double layVanToc() {
+        return 120;
+    }
+}
+class XeDap extends PhuongTienDiChuyen {
+
+    public XeDap(String loaiPhuongTien, HangSanXuat hangSanXuat) {
+        super(loaiPhuongTien, hangSanXuat);
+    }
+
+    @Override
+    public double layVanToc() {
+        return 25;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+
+        HangSanXuat h1 = new HangSanXuat("Toyota", "Nhat Ban");
+        HangSanXuat h2 = new HangSanXuat("Boeing", "My");
+        HangSanXuat h3 = new HangSanXuat("Giant", "Dai Loan");
+
+        XeOto oto = new XeOto("O to", h1, "Xang");
+        MayBay mayBay = new MayBay("May bay", h2, "Nhien lieu phan luc");
+        XeDap xeDap = new XeDap("Xe dap", h3);
+
+        System.out.println("Van toc oto: " + oto.layVanToc());
+        System.out.println("Van toc may bay: " + mayBay.layVanToc());
+        System.out.println("Van toc xe dap: " + xeDap.layVanToc());
+    }
+}
