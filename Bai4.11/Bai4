@@ -1,0 +1,73 @@
+abstract class Person {
+
+    private String name;
+    private String address;
+
+    public Person(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    abstract void display();
+}
+class Employee extends Person {
+
+    private int salary;
+
+    public Employee(String name, String address, int salary) {
+        super(name, address);
+        this.salary = salary;
+    }
+
+    @Override
+    void display() {
+        System.out.println("Employee");
+        System.out.println("Name: " + getName());
+        System.out.println("Address: " + getAddress());
+        System.out.println("Salary: " + salary);
+    }
+}
+class Customer extends Person {
+
+    private int balance;
+
+    public Customer(String name, String address, int balance) {
+        super(name, address);
+        this.balance = balance;
+    }
+
+    @Override
+    void display() {
+        System.out.println("Customer");
+        System.out.println("Name: " + getName());
+        System.out.println("Address: " + getAddress());
+        System.out.println("Balance: " + balance);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+
+        Employee e = new Employee("Nam", "HCM", 15000);
+        Customer c = new Customer("Lan", "Ha Noi", 20000);
+
+        e.display();
+        System.out.println("-----------");
+        c.display();
+    }
+}
